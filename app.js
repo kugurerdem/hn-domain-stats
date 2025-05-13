@@ -195,19 +195,22 @@ const
             const key = fmt(date);
 
             if (!aggregated[key]) {
-                aggregated[key] = { upvotes: 0, comments: 0 };
+                aggregated[key] = { upvotes: 0, comments: 0, posts: 0 };
             }
 
             aggregated[key].upvotes += item.points || 0;
             aggregated[key].comments += item.num_comments || 0;
+            aggregated[key].posts += 1
         }
 
         const labels = Object.keys(aggregated).sort();
         const upvotes = labels.map(label => aggregated[label].upvotes);
         const comments = labels.map(label => aggregated[label].comments);
+        const posts = labels.map(label => aggregated[label].posts);
 
         const ctx = document.getElementById('chart').getContext('2d');
         if (state.chartInstance) state.chartInstance.destroy();
+
 
         state.chartInstance = new Chart(ctx, {
             type: 'bar',
@@ -217,12 +220,28 @@ const
                     {
                         label: 'Upvotes',
                         data: upvotes,
-                        backgroundColor: 'rgba(255,165,0,0.6)'
+                        backgroundColor: 'rgba(255,165,0,0.6)',
+                        yAxisID: 'y1',
+                        type: 'bar'
                     },
                     {
                         label: 'Comments',
                         data: comments,
-                        backgroundColor: 'rgba(70,130,180,0.6)'
+                        backgroundColor: 'rgba(70,130,180,0.6)',
+                        yAxisID: 'y1',
+                        type: 'bar'
+                    },
+                    {
+                        label: 'Posts',
+                        data: posts,
+                        borderColor: 'rgba(34,139,34,1)',
+                        backgroundColor: 'rgba(34,139,34,0.1)',
+                        yAxisID: 'y2',
+                        type: 'line',
+                        tension: 0.3,           // Optional: smooth the line
+                        fill: false,            // No area fill
+                        pointRadius: 3,         // Small points
+                        borderWidth: 2
                     }
                 ]
             },
@@ -236,15 +255,24 @@ const
                     }
                 },
                 scales: {
-                    x: { title: { display: true, text: 'Time' } },
-                    y: {
+                    x: {
+                        title: { display: true, text: 'Time' }
+                    },
+                    y1: {
                         beginAtZero: true,
-                        title: { display: true, text: 'Total Count' }
+                        title: { display: true, text: 'Upvotes & Comments' },
+                        position: 'left'
+                    },
+                    y2: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Posts' },
+                        position: 'right',
+                        grid: { drawOnChartArea: false } // Optional: avoid clutter from y2 grid
                     }
                 }
             }
         });
-    }
+    },
 
     // Render
 
