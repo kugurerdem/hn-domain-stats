@@ -92,23 +92,23 @@ const
         return `
             <div class="analytics-cards">
                 <div class="stat-card">
-                    <div class="label">Submissions</div>
+                    <div class="label"><i class="fas fa-newspaper"></i>Submissions</div>
                     <div class="value">${submissions.length}</div>
                     <div class="secondary">From ${uniqueAuthors} unique submitters</div>
                     <div class="secondary">Average ${avgMonthlyPosts} posts/month</div>
                 </div>
                 <div class="stat-card">
-                    <div class="label">Upvotes</div>
+                    <div class="label"><i class="fas fa-arrow-up"></i>Upvotes</div>
                     <div class="value">${totalPoints}</div>
                     <div class="secondary">Average: ${avgPoints} per post</div>
                 </div>
                 <div class="stat-card">
-                    <div class="label">Comments</div>
+                    <div class="label"><i class="fas fa-comments"></i>Comments</div>
                     <div class="value">${totalComments}</div>
                     <div class="secondary">Average: ${avgComments} per post</div>
                 </div>
                 <div class="stat-card">
-                    <div class="label">Time Period</div>
+                    <div class="label"><i class="fas fa-clock"></i>Time Period</div>
                     <div class="value">${timePeriod}</div>
                     <div class="secondary">Since first submission</div>
                 </div>

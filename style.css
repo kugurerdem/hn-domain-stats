@@ -134,6 +134,13 @@ li small a {
     color: #666;
     font-weight: bold;
     margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-card .label i {
+    color: #ff6600;
 }
 
 .stat-card .value {
