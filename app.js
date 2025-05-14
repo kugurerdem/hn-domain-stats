@@ -22,16 +22,23 @@ const
 
         ${state.submissions?.length > 0 ? `
             <div class="section">
+                <h2>Analytics Overview</h2>
                 ${AnalyticsCards()}
             </div>
             <div class="section">
+                <h2>Submission Trends</h2>
                 ${ResolutionSelector()}
                 <canvas id="chart" width="400" height="200">
                 </canvas>
             </div>
         ` : ''}
 
-        ${state.submissions !== null ? ResultList() : ''}
+        ${state.submissions !== null ? `
+            <div class="section">
+                <h2>Submission History</h2>
+                ${ResultList()}
+            </div>
+        ` : ''}
     `,
 
     Header = () => `
@@ -95,7 +102,6 @@ const
         if (submissions.length === 0) return '<p> No results found </p>';
 
         return `
-        <div class="section">
             <ul>
                 ${submissions.map(item => `
                     <li>
