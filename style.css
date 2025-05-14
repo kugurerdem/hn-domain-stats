@@ -108,8 +108,37 @@ li small a {
 }
 
 /* Stats */
-p strong {
+.analytics-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.stat-card {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-width: 200px;
+    flex: 1;
+}
+
+.stat-card .label {
     color: #666;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-card .value {
+    font-size: 24px;
+    color: #ff6600;
+}
+
+.stat-card .secondary {
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
 }
 
 /* Chart */

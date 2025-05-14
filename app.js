@@ -68,12 +68,23 @@ const
         const avgComments = Math.round(totalComments / submissions.length);
 
         return `
-            <p>
-                <strong>Total Submissions:</strong> ${submissions.length}<br/>
-                <strong>Total Upvotes:</strong> ${totalPoints} (avg: ${avgPoints})<br/>
-                <strong>Total Comments:</strong> ${totalComments} (avg: ${avgComments})<br/>
-                <strong>Unique Submitters:</strong> ${uniqueAuthors}
-            </p>
+            <div class="analytics-cards">
+                <div class="stat-card">
+                    <div class="label">Submissions</div>
+                    <div class="value">${submissions.length}</div>
+                    <div class="secondary">From ${uniqueAuthors} unique submitters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Upvotes</div>
+                    <div class="value">${totalPoints}</div>
+                    <div class="secondary">Average: ${avgPoints} per post</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Comments</div>
+                    <div class="value">${totalComments}</div>
+                    <div class="secondary">Average: ${avgComments} per post</div>
+                </div>
+            </div>
         `;
     },
 
