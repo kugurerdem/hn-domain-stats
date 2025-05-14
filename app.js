@@ -30,7 +30,7 @@ const
 
     DomainInput = () => {
         return `
-            <div>
+            <div class="input-group">
                 <label for="domain">Enter Domain:</label>
                 <input
                     type="text" id="domain"

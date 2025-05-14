@@ -1,0 +1,118 @@
+/* Base styles */
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f6f6ef;
+    color: #222222;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #ff6600;
+    padding: 6px 10px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 18px;
+    color: #000;
+}
+
+/* Input and controls */
+.input-group {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+button {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #ff7711;
+}
+
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
+/* Results */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    line-height: 1.5;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+li a {
+    color: #000;
+    text-decoration: none;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+li small {
+    color: #666;
+    font-size: 12px;
+}
+
+li small a {
+    color: #666;
+}
+
+/* Stats */
+p strong {
+    color: #666;
+}
+
+/* Chart */
+canvas {
+    background-color: white;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
