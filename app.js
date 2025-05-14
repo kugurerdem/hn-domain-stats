@@ -15,8 +15,10 @@ const
     // Components
     App = () => `
         ${Header()}
+        <div class="form-container">
         ${DomainInput()}
         ${AnalyzeButton()}
+        </div>
         ${ResultList()}
         ${ResolutionSelector()}
         <canvas id="chart" width="400" height="200"></canvas>
@@ -30,14 +32,11 @@ const
 
     DomainInput = () => {
         return `
-            <div class="input-group">
-                <label for="domain">Enter Domain:</label>
-                <input
-                    type="text" id="domain"
-                    placeholder="example.com"
-                    oninput="onDomainInputChange(event)"
-                />
-            </div>
+            <input
+                type="text" id="domain"
+                placeholder="Enter domain (e.g., example.com)"
+                oninput="onDomainInputChange(event)"
+            />
         `
     },
 
