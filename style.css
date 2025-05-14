@@ -113,6 +113,15 @@ li small a {
     color: #666;
 }
 
+li small i {
+    color: #ff6600;
+    margin-right: 3px;
+}
+
+li small i.fa-hacker-news {
+    margin-left: 3px;
+}
+
 /* Stats */
 .analytics-cards {
     display: flex;
