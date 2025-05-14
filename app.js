@@ -65,7 +65,7 @@ const
 
     AnalyticsCards = () => {
         const { submissions } = state;
-        
+
         if (!submissions || submissions.length === 0) return '';
 
         const totalPoints = submissions.reduce((sum, item) => sum + (item.points || 0), 0);
@@ -84,7 +84,7 @@ const
         // Format time period
         const years = Math.floor(monthsSinceFirst / 12);
         const months = monthsSinceFirst % 12;
-        const timePeriod = years > 0 
+        const timePeriod = years > 0
             ? `${years} year${years > 1 ? 's' : ''}${months > 0 ? `, ${months} month${months > 1 ? 's' : ''}` : ''}`
             : `${months} month${months > 1 ? 's' : ''}`;
 
@@ -97,11 +97,6 @@ const
                     <div class="secondary">Average ${avgMonthlyPosts} posts/month</div>
                 </div>
                 <div class="stat-card">
-                    <div class="label">Time Period</div>
-                    <div class="value">${timePeriod}</div>
-                    <div class="secondary">Since first submission</div>
-                </div>
-                <div class="stat-card">
                     <div class="label">Upvotes</div>
                     <div class="value">${totalPoints}</div>
                     <div class="secondary">Average: ${avgPoints} per post</div>
@@ -110,6 +105,11 @@ const
                     <div class="label">Comments</div>
                     <div class="value">${totalComments}</div>
                     <div class="secondary">Average: ${avgComments} per post</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Time Period</div>
+                    <div class="value">${timePeriod}</div>
+                    <div class="secondary">Since first submission</div>
                 </div>
             </div>
         `;
