@@ -74,12 +74,32 @@ const
         const avgPoints = Math.round(totalPoints / submissions.length);
         const avgComments = Math.round(totalComments / submissions.length);
 
+        // Calculate time-based stats
+        const dates = submissions.map(item => new Date(item.created_at));
+        const firstPost = new Date(Math.min(...dates));
+        const now = new Date();
+        const monthsSinceFirst = Math.round((now - firstPost) / (30 * 24 * 60 * 60 * 1000));
+        const avgMonthlyPosts = (submissions.length / monthsSinceFirst).toFixed(1);
+
+        // Format time period
+        const years = Math.floor(monthsSinceFirst / 12);
+        const months = monthsSinceFirst % 12;
+        const timePeriod = years > 0 
+            ? `${years} year${years > 1 ? 's' : ''}${months > 0 ? `, ${months} month${months > 1 ? 's' : ''}` : ''}`
+            : `${months} month${months > 1 ? 's' : ''}`;
+
         return `
             <div class="analytics-cards">
                 <div class="stat-card">
                     <div class="label">Submissions</div>
                     <div class="value">${submissions.length}</div>
                     <div class="secondary">From ${uniqueAuthors} unique submitters</div>
+                    <div class="secondary">Average ${avgMonthlyPosts} posts/month</div>
+                </div>
+                <div class="stat-card">
+                    <div class="label">Time Period</div>
+                    <div class="value">${timePeriod}</div>
+                    <div class="secondary">Since first submission</div>
                 </div>
                 <div class="stat-card">
                     <div class="label">Upvotes</div>
