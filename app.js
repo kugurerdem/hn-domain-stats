@@ -20,12 +20,16 @@ const
             ${AnalyzeButton()}
         </div>
 
-        ${state.submissions?.length > 0 ?
-            `<div class="section">
+        ${state.submissions?.length > 0 ? `
+            <div class="section">
+                ${AnalyticsCards()}
+            </div>
+            <div class="section">
                 ${ResolutionSelector()}
                 <canvas id="chart" width="400" height="200">
                 </canvas>
-            </div>` : ''}
+            </div>
+        ` : ''}
 
         ${state.submissions !== null ? ResultList() : ''}
     `,
@@ -52,24 +56,35 @@ const
         </button>
     `,
 
+    AnalyticsCards = () => {
+        const { submissions } = state;
+        
+        if (!submissions || submissions.length === 0) return '';
+
+        const totalPoints = submissions.reduce((sum, item) => sum + (item.points || 0), 0);
+        const totalComments = submissions.reduce((sum, item) => sum + (item.num_comments || 0), 0);
+        const uniqueAuthors = new Set(submissions.map(item => item.author)).size;
+        const avgPoints = Math.round(totalPoints / submissions.length);
+        const avgComments = Math.round(totalComments / submissions.length);
+
+        return `
+            <p>
+                <strong>Total Submissions:</strong> ${submissions.length}<br/>
+                <strong>Total Upvotes:</strong> ${totalPoints} (avg: ${avgPoints})<br/>
+                <strong>Total Comments:</strong> ${totalComments} (avg: ${avgComments})<br/>
+                <strong>Unique Submitters:</strong> ${uniqueAuthors}
+            </p>
+        `;
+    },
+
 
     ResultList = () => {
         const { submissions } = state;
 
         if (submissions.length === 0) return '<p> No results found </p>';
 
-        const totalPoints = submissions.reduce((sum, item) => sum + (item.points || 0), 0);
-        const totalComments = submissions.reduce((sum, item) => sum + (item.num_comments || 0), 0);
-        const uniqueAuthors = new Set(submissions.map(item => item.author)).size;
-
         return `
-        <div>
-            <p>
-                <strong>Total Submissions:</strong> ${submissions.length}<br/>
-                <strong>Total Upvotes:</strong> ${totalPoints}<br/>
-                <strong>Total Comments:</strong> ${totalComments}<br/>
-                <strong>Unique Submitters:</strong> ${uniqueAuthors}
-            </p>
+        <div class="section">
             <ul>
                 ${submissions.map(item => `
                     <li>
