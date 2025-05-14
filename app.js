@@ -52,6 +52,7 @@ const
             <input
                 type="text" id="domain"
                 placeholder="Enter domain (e.g., example.com)"
+                value="${state.domain}"
                 oninput="onDomainInputChange(event)"
             />
         `
