@@ -209,17 +209,15 @@ const
                         return false;
                     }
                 });
-
-
-                render();
-                drawChart(state.submissions);
             } catch (error) {
                 console.error('Error fetching data:', error);
                 state.submissions = [];
-                render();
             } finally {
                 state.loading = false;
                 render();
+                if (state.submissions) {
+                    drawChart(state.submissions);
+                }
             }
     },
 
