@@ -128,7 +128,8 @@ const
                     <li>
                         <a href="${item.url}" target="_blank">${item.title}</a><br/>
                         <small>
-                            <i class="fas fa-user"></i> <a href="https://news.ycombinator.com/user?id=${item.author}" target="_blank">${item.author}</a>
+                            <i class="fas fa-calendar"></i> ${new Date(item.created_at).toLocaleDateString()}
+                            | <i class="fas fa-user"></i> <a href="https://news.ycombinator.com/user?id=${item.author}" target="_blank">${item.author}</a>
                             | <i class="fas fa-arrow-up"></i> ${item.points} 
                             | <i class="fas fa-comments"></i> ${item.num_comments}
                             | <a href="https://news.ycombinator.com/item?id=${item.objectID}" target="_blank"><i class="fab fa-hacker-news"></i> Discussion</a>
