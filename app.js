@@ -217,6 +217,9 @@ const
                 console.error('Error fetching data:', error);
                 state.submissions = [];
                 render();
+            } finally {
+                state.loading = false;
+                render();
             }
     },
 
