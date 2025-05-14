@@ -10,6 +10,7 @@ const
         submissions: null, // null if not analyzed, otherwise [...submissions]
         chartInstance: null,
         resolution: MONTHLY_RESOLUTION,
+        loading: false,
     },
 
     // Components
@@ -59,8 +60,8 @@ const
     },
 
     AnalyzeButton = () => `
-        <button id="analyze-button" onclick="onAnalyzeButtonClick()">
-            Analyze Domain
+        <button id="analyze-button" onclick="onAnalyzeButtonClick()" ${state.loading ? 'disabled' : ''}>
+            ${state.loading ? '<i class="fas fa-spinner fa-spin"></i> Analyzing...' : 'Analyze Domain'}
         </button>
     `,
 
@@ -170,6 +171,9 @@ const
             alert('Please enter a domain.');
             return;
         }
+
+        state.loading = true;
+        render();
 
         const normalizedDomain = state.domain.toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '');
             const baseUrl = `https://hn.algolia.com/api/v1/search?query=${encodeURIComponent(state.domain)}&restrictSearchableAttributes=url&tags=story`;

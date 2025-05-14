@@ -73,6 +73,15 @@ button:hover {
     background-color: #ff7711;
 }
 
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+button .fa-spinner {
+    margin-right: 5px;
+}
+
 select {
     padding: 8px;
     border: 1px solid #ccc;
