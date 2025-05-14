@@ -19,9 +19,11 @@ const
         ${DomainInput()}
         ${AnalyzeButton()}
         </div>
-        ${ResultList()}
-        ${ResolutionSelector()}
-        <canvas id="chart" width="400" height="200"></canvas>
+        ${state.submissions.length > 0 ? `
+            ${ResultList()}
+            ${ResolutionSelector()}
+            <canvas id="chart" width="400" height="200"></canvas>
+        ` : ''}
     `,
 
     Header = () => `
@@ -50,7 +52,7 @@ const
     ResultList = () => {
         const { submissions } = state;
 
-        if (submissions.length === 0) return '<p>No results found.</p>';
+        if (submissions.length === 0) return '';
 
         const totalPoints = submissions.reduce((sum, item) => sum + (item.points || 0), 0);
         const totalComments = submissions.reduce((sum, item) => sum + (item.num_comments || 0), 0);
