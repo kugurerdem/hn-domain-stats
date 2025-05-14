@@ -7,7 +7,7 @@ const
 
     state = {
         domain: '',
-        submissions: [],
+        submissions: null, // null if not analyzed, otherwise [...submissions]
         chartInstance: null,
         resolution: MONTHLY_RESOLUTION,
     },
@@ -15,15 +15,19 @@ const
     // Components
     App = () => `
         ${Header()}
-        <div class="form">
-        ${DomainInput()}
-        ${AnalyzeButton()}
+        <div class="section form">
+            ${DomainInput()}
+            ${AnalyzeButton()}
         </div>
-        ${state.submissions.length > 0 ? `
-            ${ResultList()}
-            ${ResolutionSelector()}
-            <canvas id="chart" width="400" height="200"></canvas>
-        ` : ''}
+
+        ${state.submissions?.length > 0 ?
+            `<div class="section">
+                ${ResolutionSelector()}
+                <canvas id="chart" width="400" height="200">
+                </canvas>
+            </div>` : ''}
+
+        ${state.submissions !== null ? ResultList() : ''}
     `,
 
     Header = () => `
@@ -52,7 +56,7 @@ const
     ResultList = () => {
         const { submissions } = state;
 
-        if (submissions.length === 0) return '';
+        if (submissions.length === 0) return '<p> No results found </p>';
 
         const totalPoints = submissions.reduce((sum, item) => sum + (item.points || 0), 0);
         const totalComments = submissions.reduce((sum, item) => sum + (item.num_comments || 0), 0);
@@ -145,6 +149,7 @@ const
                         return false;
                     }
                 });
+
 
                 render();
                 drawChart(state.submissions);

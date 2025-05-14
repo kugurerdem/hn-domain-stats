@@ -23,18 +23,22 @@ header h1 {
     color: #fff;
 }
 
-header, .form, input[type="text"], button, select {
+header, .section, .form, input[type="text"], button, select {
     font-size: 14px;
     font-family: Verdana, Geneva, sans-serif;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
-.form {
-    text-align: center;
+.section {
     padding: 20px;
+    margin-bottom: 20px;
     background-color: #eee;
     border-radius: 3px;
     border: 1px solid #ccc;
+}
+
+.form {
+    text-align: center;
 }
 
 input[type="text"], button, select {
