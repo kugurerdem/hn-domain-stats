@@ -15,7 +15,7 @@ const
     // Components
     App = () => `
         ${Header()}
-        <div class="form-container">
+        <div class="form">
         ${DomainInput()}
         ${AnalyzeButton()}
         </div>
