@@ -20,7 +20,9 @@ const App = () => `
         <input
             type="text" id="domain"
             placeholder="Enter domain (e.g., example.com)"
-            value="${state.domain}" oninput="onDomainInputChange(event)" />
+            value="${state.domain}" 
+            oninput="onDomainInputChange(event)"
+            onkeydown="if(event.key === 'Enter') onAnalyzeButtonClick()" />
         <button
             id="analyze-button" onclick="onAnalyzeButtonClick()"
             ${state.loading ? 'disabled' : ''}>
