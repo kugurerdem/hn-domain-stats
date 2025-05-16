@@ -1,3 +1,5 @@
+const githubLink = 'https://github.com/kugurerdem/hnstats'
+
 const RESOLUTIONS = {
     YEARLY: 'yearly',
     MONTHLY: 'monthly',
@@ -15,7 +17,12 @@ const state = {
 
 // Components
 const App = () => `
-    <header> <h1> HN Domain Analyzer </h1> </header>
+    <header>
+        <h1> HN Domain Analyzer </h1>
+        <a href="${githubLink}" class="github-link" target="_blank">
+            <i class="fab fa-github"></i> View on GitHub
+        </a>
+    </header>
     <div class="section form">
         <input
             type="text" id="domain"
