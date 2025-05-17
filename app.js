@@ -18,7 +18,7 @@ const state = {
 // Components
 const App = () => `
     <header>
-        <h1> HN Domain Analyzer </h1>
+        <h1> HN Domain Stats </h1>
         <a href="${githubLink}" class="github-link" target="_blank">
             <i class="fab fa-github"></i> View on GitHub
         </a>
