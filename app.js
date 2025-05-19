@@ -12,8 +12,6 @@ const {
 const patch =
     init([classModule, propsModule, styleModule, eventListenersModule]);
 
-let vnode = document.getElementById('app');
-
 const githubLink = 'https://github.com/kugurerdem/hn-domain-stats';
 const RESOLUTIONS =
     {YEARLY: 'yearly', MONTHLY: 'monthly', WEEKLY: 'weekly', DAILY: 'daily'};
@@ -178,10 +176,6 @@ const onAnalyze = async () => {
     if (state.submissions) drawChart(state.submissions);
 };
 
-const formatTimePeriod = (y, m) =>
-    (y ? `${y} year${y > 1 ? 's' : ''}` : '') +
-        (m ? `${y ? ', ' : ''}${m} month${m > 1 ? 's' : ''}` : '');
-
 const normalizeDomain = urlOrDomain => {
     try {
         const host = new URL(
@@ -266,6 +260,11 @@ const formatDate = (date) => {
     }
 };
 
+const formatTimePeriod = (y, m) =>
+    (y ? `${y} year${y > 1 ? 's' : ''}` : '') +
+        (m ? `${y ? ', ' : ''}${m} month${m > 1 ? 's' : ''}` : '');
+
+let vnode = document.getElementById('app');
 const rerender = () => vnode = patch(vnode, App());
 
 document.addEventListener('DOMContentLoaded', rerender);
