@@ -14,7 +14,7 @@ A web-based tool that analyzes and visualizes how domains perform on Hacker News
 
 ## Tech Stack
 
-* Vanilla JavaScript
+* Snabbdom for VDOM management
 * Chart.js for visualizations
 * Lodash for data manipulation
 * HN Algolia API for data fetching
